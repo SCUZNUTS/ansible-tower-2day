@@ -19,3 +19,5 @@
 - name: Prints out the domain list available
   win_shell: nltest /dclist:"{{ ad_domain_name }}"
   become: yes
+  tags:
+    - print_domain_list
