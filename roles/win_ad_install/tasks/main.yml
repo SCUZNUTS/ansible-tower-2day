@@ -32,6 +32,6 @@
   register: domain_list_output
 
 - debug:
-    var: domain_list_output
+    var: domain_list_output.stdout
   tags:
     - print_domain_list

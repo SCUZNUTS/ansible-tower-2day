@@ -1,0 +1,4 @@
+- name: Install windows features
+  hosts: windows
+  roles:
+   - { role: ../roles/win_ad_install }

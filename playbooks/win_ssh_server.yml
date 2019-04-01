@@ -1,0 +1,4 @@
+- name: Install openssh
+  hosts: windows
+  roles:
+   - { role: ../roles/win_service_config }
