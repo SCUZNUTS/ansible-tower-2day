@@ -17,6 +17,12 @@
   become: yes
   tags:
     - domain_check
+  register: domain_create_results
+
+- name: Reboot windows host after AD create
+  win_reboot:
+  become: yes
+  when: domain_create_results.rc == 0
 
 - name: Prints out the domain list available
   win_shell: nltest /dclist:{{ ad_domain_name }}
