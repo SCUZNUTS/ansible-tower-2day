@@ -8,7 +8,6 @@
 - name: Reboot windows host
   win_reboot:
   become: yes
-  when: ad_domain_results.rc == 0
 
 - name: Ensure the named domain is reachable from the target host; if not, create the domain in a new forest residing on the target host
   win_domain:
@@ -22,7 +21,6 @@
 - name: Reboot windows host after AD create
   win_reboot:
   become: yes
-  when: domain_create_results.rc == 0
   tags:
     - reboot_hosts
 
