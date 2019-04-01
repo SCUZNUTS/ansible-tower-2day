@@ -19,7 +19,7 @@
     - domain_check
 
 - name: Prints out the domain list available
-  win_command: nltest /dclist:ad1.d9f7.example.opentlc.com
+  win_command: nltest /dclist:{{ ad_domain_name }}
   become: yes
   tags:
     - print_domain_list
