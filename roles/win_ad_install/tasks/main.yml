@@ -23,3 +23,9 @@
   become: yes
   tags:
     - print_domain_list
+  register: domain_list_output
+
+- debug:
+    var: domain_list_output
+  tags:
+    - print_domain_list
