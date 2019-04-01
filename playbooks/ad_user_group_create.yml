@@ -1,0 +1,4 @@
+- name: AD user create playbook
+  hosts: windows
+  roles:
+   - { role: ../roles/win_ad_user }

@@ -1,0 +1,20 @@
+- name: Include vars
+  include_vars:
+    file: ad_users.yml
+
+- name: Create windows domain group
+  win_domain_group:
+    name: "{{ item.group_name }}"
+    scope: "{{ item.group_scope }}"
+    state: present
+  loop: "{{ user_info }}"
+
+- name: Ensure users are created in AD
+  win_domain_user:
+    name: "{{ item.name }}"
+    firstname: "{{ item.firstname }}"
+    surname: "{{ item.surname }}"
+    password: "{{ item.password }}"
+    groups: "{{ item.group_name }}"
+    state: present
+  loop: "{{ user_info }}"
