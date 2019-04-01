@@ -23,6 +23,8 @@
   win_reboot:
   become: yes
   when: domain_create_results.rc == 0
+  tags:
+    - reboot_hosts
 
 - name: Prints out the domain list available
   win_shell: nltest /dclist:{{ ad_domain_name }}
