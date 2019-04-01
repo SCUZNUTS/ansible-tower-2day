@@ -13,6 +13,8 @@
     dns_domain_name: "{{ ad_domain_name }}"
     safe_mode_password: "{{ ad_safe_mode_password }}"
   become: yes
+  tag:
+    - domain_check
 
 - name: Prints out the domain list available
   win_shell: nltest /dclist:"{{ ad_domain_name }}"
