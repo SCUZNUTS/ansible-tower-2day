@@ -1,3 +1,7 @@
+- name: Include vars
+  include_vars:
+    file: ssh_var.yml
+
 - name: install_chocolatey
   win_chocolatey:
     name: "chocolatey"
