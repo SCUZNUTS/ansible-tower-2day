@@ -8,6 +8,7 @@
 - name: Reboot windows host
   win_reboot:
   become: yes
+  when: ad_domain_results.changed
 
 - name: Ensure the named domain is reachable from the target host; if not, create the domain in a new forest residing on the target host
   win_domain:
@@ -23,6 +24,7 @@
   become: yes
   tags:
     - reboot_hosts
+  when: domain_create_results.changed
 
 - name: Prints out the domain list available
   win_shell: nltest /dclist:{{ ad_domain_name }}

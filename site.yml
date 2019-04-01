@@ -1,0 +1,4 @@
+---
+- import_playbook: playbooks/setup_ad.yml
+- import_playbook: playbooks/win_ssh_server.yml
+- import_playbook: playbooks/ad_user_group_create.yml
