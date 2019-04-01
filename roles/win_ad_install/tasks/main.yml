@@ -3,15 +3,15 @@
     name: AD-Domain-Services
     state: present
   become: yes
-    
+
+- name: Reboot windows host
+  win_reboot:
+  become: yes
+
 - name: Ensure the named domain is reachable from the target host; if not, create the domain in a new forest residing on the target host
   win_domain:
     dns_domain_name: "{{ ad_domain_name }}"
     safe_mode_password: "{{ ad_safe_mode_password }}"
-  become: yes
-
-- name: Reboot windows host
-  win_reboot:
   become: yes
 
 - name: Prints out the domain list available
