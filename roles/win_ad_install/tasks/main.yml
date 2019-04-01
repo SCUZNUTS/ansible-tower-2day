@@ -3,10 +3,12 @@
     name: AD-Domain-Services
     state: present
   become: yes
+  register: ad_domain_results
 
 - name: Reboot windows host
   win_reboot:
   become: yes
+  when: ad_domain_results.rc == 0
 
 - name: Ensure the named domain is reachable from the target host; if not, create the domain in a new forest residing on the target host
   win_domain:
@@ -17,7 +19,7 @@
     - domain_check
 
 - name: Prints out the domain list available
-  win_shell: nltest /dclist:"{{ ad_domain_name }}"
+  win_command: nltest /dclist:"{{ ad_domain_name }}"
   become: yes
   tags:
     - print_domain_list
